@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">chapter01_youtube</string>
+    <string name="menu_home">홈</string>
 </resources>

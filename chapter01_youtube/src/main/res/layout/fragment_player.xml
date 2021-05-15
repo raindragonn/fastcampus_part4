@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.raindragonn.chapter01_youtube.CustomMotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motion_player"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_player_scene">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_main_container"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:background="#CCCCCC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/cl_main_container"
+        app:layout_constraintStart_toStartOf="@id/cl_main_container"
+        app:layout_constraintTop_toTopOf="@id/cl_main_container"
+        app:resize_mode="fill" />
+
+    <!--  접었을때 플레이 버튼  -->
+    <ImageView
+        android:id="@+id/iv_bottom_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@id/cl_main_container"
+        app:layout_constraintEnd_toEndOf="@id/cl_main_container"
+        app:layout_constraintTop_toTopOf="@id/cl_main_container" />
+
+    <!-- 접었을때 제목   -->
+    <TextView
+        android:id="@+id/tv_bottom_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="타이틀"
+        android:textColor="@color/black"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="@id/iv_bottom_play"
+        app:layout_constraintEnd_toStartOf="@id/iv_bottom_play"
+        app:layout_constraintStart_toEndOf="@id/playerView"
+        app:layout_constraintTop_toTopOf="@id/iv_bottom_play" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_play"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_main_container" />
+</com.raindragonn.chapter01_youtube.CustomMotionLayout>
