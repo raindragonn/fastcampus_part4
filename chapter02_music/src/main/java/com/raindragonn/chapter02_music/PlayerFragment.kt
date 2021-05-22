@@ -23,12 +23,12 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     private val TAG: String = PlayerFragment::class.java.simpleName
     private val adapter by lazy {
         PlayListAdapter {
-
+            playMusic(it)
         }
     }
 
+    private var model = PlayerModel()
     private var binding: FragmentPlayerBinding? = null
-    private var isWatchingListView = true
     private var player: SimpleExoPlayer? = null
 
     override fun onCreateView(
@@ -64,17 +64,28 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                         ivControlPlay.setImageResource(R.drawable.ic_play)
                     }
                 }
+
+                override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
+                    super.onMediaItemTransition(mediaItem, reason)
+
+                    val newIndex = mediaItem?.mediaId ?: return
+                    model.currentPosition = newIndex.toInt()
+                    
+                    adapter.submitList(model.getAdapterModels())
+                }
             })
         }
     }
 
     private fun initViews() {
         binding?.apply {
-            //todo 만약에 서버에서 데이터가 다 불려오지 않은 상태 일 때
             ivControlList.setOnClickListener {
-                groupPlayer.isVisible = isWatchingListView
-                groupList.isVisible = isWatchingListView.not()
-                isWatchingListView = !isWatchingListView
+                //todo 만약에 서버에서 데이터가 다 불려오지 않은 상태 일 때
+                if (model.currentPosition == -1) return@setOnClickListener
+
+                groupPlayer.isVisible = model.isWatchingListView
+                groupList.isVisible = model.isWatchingListView.not()
+                model.isWatchingListView = !model.isWatchingListView
             }
 
             rvPlaylist.adapter = adapter
@@ -85,18 +96,27 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
             }
 
             ivControlNext.setOnClickListener {
-
+                onControlNext()
             }
 
             ivControlPrev.setOnClickListener {
-
+                onControlPrev()
             }
         }
     }
 
+    private fun onControlPrev() {
+        val prevMusic = model.getPrevMusic() ?: return
+        playMusic(prevMusic)
+    }
+
+    private fun onControlNext() {
+        val nextMusic = model.getNextMusic() ?: return
+        playMusic(nextMusic)
+    }
+
     private fun onControlPlay() {
         val player = this@PlayerFragment.player ?: return
-
         if (player.isPlaying) {
             player.pause()
         } else {
@@ -107,14 +127,10 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
     private fun getVideoList() {
         NetworkManager.getList(
             response = { call, response ->
-                response.body()?.let {
-                    val modelList = it.musics.mapIndexed { index, musicEntity ->
-                        musicEntity.mapper(index.toLong())
-                    }
-
-                    setMusicList(modelList)
-                    adapter.submitList(modelList)
-
+                response.body()?.let { musicDto ->
+                    model = musicDto.mapper()
+                    setMusicList(model.getAdapterModels())
+                    adapter.submitList(model.getAdapterModels())
                 }
             }, failure = { call, t ->
 
@@ -131,8 +147,13 @@ class PlayerFragment : Fragment(R.layout.fragment_player) {
                     .build()
             })
             player?.prepare()
-            player?.play()
         }
+    }
+
+    private fun playMusic(musicModel: MusicModel) {
+        model.updateCurrentPosition(musicModel)
+        player?.seekTo(model.currentPosition, 0)
+        player?.play()
     }
 
     override fun onDestroyView() {
