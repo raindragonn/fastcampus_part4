@@ -41,6 +41,19 @@
         tools:text="테스트 제목" />
 
     <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="재생목록"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/tv_singer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,5 +84,125 @@
             android:layout_height="match_parent"
             tools:background="@color/purple_200" />
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_playlist"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/playerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:use_controller="false" />
+
+    <SeekBar
+        android:id="@+id/sb_player"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginBottom="30dp"
+        android:maxHeight="4dp"
+        android:minHeight="4dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:progressDrawable="@drawable/player_seek_bg"
+        android:thumb="@drawable/player_seek_thumb"
+        app:layout_constraintBottom_toTopOf="@id/playerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:progress="40" />
+
+    <TextView
+        android:id="@+id/tv_playTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/purple_200"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/sb_player"
+        app:layout_constraintTop_toBottomOf="@id/sb_player"
+        tools:text="20:20" />
+
+    <TextView
+        android:id="@+id/tv_totalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/gray_97"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/sb_player"
+        app:layout_constraintTop_toBottomOf="@id/sb_player"
+        tools:text="00:00" />
+
+    <SeekBar
+        android:id="@+id/sb_list"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:clickable="false"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:progressTint="@color/purple_200"
+        android:thumb="@null"
+        android:thumbTint="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playerView"
+        tools:progress="40" />
+
+    <ImageView
+        android:id="@+id/iv_control_play"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@id/playerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playerView"
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/iv_control_next"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_next"
+        app:layout_constraintBottom_toBottomOf="@id/playerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@id/iv_control_play"
+        app:layout_constraintTop_toTopOf="@id/playerView"
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/iv_control_prev"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_prev"
+        app:layout_constraintBottom_toBottomOf="@id/playerView"
+        app:layout_constraintEnd_toStartOf="@id/iv_control_play"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playerView"
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/iv_control_list"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/ic_playlist"
+        app:layout_constraintBottom_toBottomOf="@id/playerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/playerView"
+        app:tint="@color/black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

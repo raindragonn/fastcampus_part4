@@ -19,3 +19,12 @@
     - 오디오 및 동영상 재생
 
     - [link](https://exoplayer.dev/hello-world.html)
+
+
+## chapter02_music
+
+> 재생 목록 화면과 플레이 화면을 가진 Exoplayer를 활용한 뮤직 플레이어 앱
+
+**사용 기술**
+
+- `ExoPlayer`
