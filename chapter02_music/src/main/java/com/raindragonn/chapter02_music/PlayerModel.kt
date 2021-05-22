@@ -17,7 +17,8 @@ data class PlayerModel(
     }
 
     fun updateCurrentPosition(musicModel: MusicModel) {
-        currentPosition = playMusicList.indexOf(musicModel)
+        currentPosition = playMusicList.indexOfFirst { it.id == musicModel.id }
+//        currentPosition = playMusicList.indexOf(musicModel)
     }
 
     fun getNextMusic(): MusicModel? {
@@ -35,6 +36,12 @@ data class PlayerModel(
 
         currentPosition =
             if ((currentPosition - 1) < 0) playMusicList.lastIndex else currentPosition - 1
+
+        return playMusicList[currentPosition]
+    }
+
+    fun currentMusicModel(): MusicModel? {
+        if(playMusicList.isEmpty()) return null
 
         return playMusicList[currentPosition]
     }

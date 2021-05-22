@@ -28,3 +28,5 @@
 **사용 기술**
 
 - `ExoPlayer`
+
+- `ListAdapter, DiffUtil`
