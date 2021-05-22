@@ -5,19 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_Player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="tv_track,tv_singer,v_bottomBackground,card_cover,
+        sb_player,tv_playTime,tv_totalTime" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_title,rv_playlist,sb_list" />
+
     <View
         android:id="@+id/v_topBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/background"
-        app:layout_constraintBottom_toTopOf="@id/v_botomBackground"
+        app:layout_constraintBottom_toTopOf="@id/v_bottomBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="3" />
 
     <View
-        android:id="@+id/v_botomBackground"
+        android:id="@+id/v_bottomBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white_background"
@@ -66,6 +81,7 @@
         tools:text="대한민국" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_cover"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="36dp"
