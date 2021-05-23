@@ -30,3 +30,24 @@
 - `ExoPlayer`
 
 - `ListAdapter, DiffUtil`
+
+   - 기존의 recyclerView.adapter 사용시 아이템 변경에 대한 처리를 보다 쉽게 이용이 가능합니다.
+
+   - 보일러플레이트 코드를 많이 줄일수 있습니다.
+
+## chapter03_map
+
+> google 지도 기반의 앱 입니다
+
+**사용 기술**
+
+- `Coroutine`
+
+- `okhttp3, retrofit2`
+
+- `google map API`
+
+- `POI API`
+
+
+

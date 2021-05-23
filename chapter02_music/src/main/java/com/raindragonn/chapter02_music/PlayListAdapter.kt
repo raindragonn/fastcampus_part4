@@ -36,7 +36,6 @@ class PlayListAdapter(private val callBack: (MusicModel) -> Unit) :
 
     inner class ViewHolder(private val binding: ItemMusicBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         init {
             binding.root.setOnClickListener {
                 callBack(currentList[adapterPosition])

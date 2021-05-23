@@ -1,3 +1,4 @@
+include ':chapter03_map'
 include ':chapter02_music'
 include ':chapter01_youtube'
 rootProject.name = "chapter01_youtube"

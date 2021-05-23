@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">chapter03_map</string>
+    <string name="search">검색</string>
+    <string name="empty_result_text">검색 결과가 없습니다.</string>
+    <string name="hint_main_search">검색어를 입력해 주세요.</string>
+
+
+</resources>
