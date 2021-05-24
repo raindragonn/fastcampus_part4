@@ -1,6 +1,7 @@
 package com.raindragonn.chapter03_map
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 Toast.LENGTH_SHORT
             )
                 .show()
+            MapActivity.startMap(this, it)
         }
     }
 
@@ -50,6 +52,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         tvEmptyResult.isVisible = false
         rvSearch.adapter = adapter
         rvSearch.layoutManager = LinearLayoutManager(this@MainActivity)
+
+        etSearch.setOnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                val keyword = etSearch.text.toString()
+                onSearchKeyword(keyword)
+                return@setOnKeyListener true
+            } else {
+                return@setOnKeyListener false
+            }
+        }
+
+        etSearch.setText("강남역")
 
         btnSearch.setOnClickListener {
             val keyword = etSearch.text.toString()
@@ -102,5 +116,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         adapter.setList(dataList)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        job.cancel()
     }
 }
