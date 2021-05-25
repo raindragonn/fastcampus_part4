@@ -43,11 +43,35 @@
 
 - `Coroutine`
 
+   - 비동기 처리를 위한 솔루션
+
 - `okhttp3, retrofit2`
+
+   - Okhttp 클라이언트를 이용해서 타임아웃설정 및 네트워크 통신정보를 확인해볼 수 있습니다.
 
 - `google map API`
 
-- `POI API`
+- `Tmap POI API`
 
 
+## chapter04_ott_intro
+
+> ott앱의 인트로를 따라 변화하는 레이아웃
+
+**사용 기술**
+
+- `MotionLayout`
+
+- `CoordinatorLayout`
+
+
+## chapter05_githubRepo
+
+> 깃헙 레파지토리를 검색하고 찜목록에 추가해서 리스트를 확인할 수 있습니다.
+
+**사용 기술**
+
+- `Coroutine`
+
+- ``
 
