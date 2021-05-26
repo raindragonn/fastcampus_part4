@@ -6,7 +6,7 @@ import retrofit2.http.*
 
 // Created by raindragonn on 2021/05/25.
 
-interface GithubAuthApiService {
+interface GithubAuthService {
 
     @FormUrlEncoded
     @POST("login/oauth/access_token")

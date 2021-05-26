@@ -16,15 +16,33 @@ object NetworkManager {
     private const val BASE_GITHUB_URL = "https://github.com"
     private const val BASE_GITHUB_API_URL = "https://api.github.com"
 
-    val authApiService: GithubAuthApiService by lazy {
+    internal val authService: GithubAuthService by lazy {
         getGithubRetrofit().create(
-            GithubAuthApiService::class.java
+            GithubAuthService::class.java
         )
+    }
+
+    internal val apiService: GithubApiService by lazy {
+        getGithubAPiRetrofit().create(GithubApiService::class.java)
     }
 
     private fun getGithubRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_GITHUB_URL)
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder()
+                        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                        .create()
+                )
+            )
+            .client(buildOkHttpClient())
+            .build()
+    }
+
+    private fun getGithubAPiRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_GITHUB_API_URL)
             .addConverterFactory(
                 GsonConverterFactory.create(
                     GsonBuilder()

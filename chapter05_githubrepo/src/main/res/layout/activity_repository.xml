@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RepositoryActivity">
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_ownerNameAndRepoName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_github" />
+
+    <TextView
+        android:id="@+id/tv_ownerNameAndRepoName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_stargazersCount"
+        app:layout_constraintEnd_toStartOf="@id/iv_like"
+        app:layout_constraintStart_toEndOf="@id/iv_profile"
+        app:layout_constraintTop_toTopOf="@id/iv_profile"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="raindragonn/hihihi" />
+
+    <ImageView
+        android:id="@+id/iv_like"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="@id/v_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/red"
+        tools:src="@drawable/ic_dislike" />
+
+    <TextView
+        android:id="@+id/tv_stargazersCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_star"
+        app:drawableTint="@color/orange_yellow"
+        app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+        app:layout_constraintStart_toStartOf="@id/tv_ownerNameAndRepoName"
+        app:layout_constraintTop_toBottomOf="@id/tv_ownerNameAndRepoName"
+        tools:text="1.2k" />
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="6dp"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/ic_circle"
+        app:layout_constraintBottom_toBottomOf="@id/tv_stargazersCount"
+        app:layout_constraintStart_toEndOf="@id/tv_stargazersCount"
+        app:layout_constraintTop_toTopOf="@id/tv_stargazersCount"
+        tools:text="Java" />
+
+    <View
+        android:id="@+id/v_divider"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+
+    <TextView
+        android:id="@+id/tv_descriptionGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="설명"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@id/v_divider" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@id/tv_descriptionGuide"
+        tools:text="부제목" />
+
+    <TextView
+        android:id="@+id/tv_updateTimeGuide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="업데이트 시간"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    <TextView
+        android:id="@+id/tv_updateTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@id/tv_updateTimeGuide"
+        tools:text="부제목" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
