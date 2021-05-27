@@ -79,6 +79,8 @@
 
 > 오픈 api로부터 미세먼지 정보를 가져와 확인 및 홈스크린에 위젯을 추가할 수 있습니다.
 
+**사용 기술**
+
 -  `FusedLocationProviderClient` 
 
 - `App Widget`
@@ -93,3 +95,20 @@
 
 - `Coroutine`
 
+## chatper07_imageSearch
+
+> Unsplash API를 이용해 사진을 불러와 다운받을 수 있으며 배경화면으로 설정할 수 있습니다.
+
+**사용 기술**
+
+- `ShimmerLayout`
+
+  - loading shimmer란 페이스북, 인스타그램에서 로딩중에 보이는 UI 틀을 유지하면서 로딩 하는것
+
+   - facebook에서 지원하는 라이브러리 입니다.
+
+   - [http://facebook.github.io/shimmer-android/](http://facebook.github.io/shimmer-android/)
+
+- `WallpaperManager`
+
+- `Coroutine`

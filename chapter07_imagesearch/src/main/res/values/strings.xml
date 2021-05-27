@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Chapter06_ImageSearch</string>
+    <string name="hint_search">이미지를 검색해보세요.</string>
+    <string name="error_description">문제가 생겼습니다!\n아래로 당겨 새로고침 해주세요.</string>
+</resources>
