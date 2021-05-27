@@ -75,3 +75,21 @@
 
 - `github api`
 
+## chapter06_dust
+
+> 오픈 api로부터 미세먼지 정보를 가져와 확인 및 홈스크린에 위젯을 추가할 수 있습니다.
+
+-  `FusedLocationProviderClient` 
+
+- `App Widget`
+
+   - `AppwidgetProviderInfo`
+
+      - 앱 위젯에 대한 정보를 담는 xml,  layout size, 업데이트주기,초기에 보여줄 레이아웃이 어떤건지등 정보를 담는다
+
+   - `AppWidgetProvider`
+
+     - 시스템에서 위젯을 제공하는 이벤트가 발생시 이를 수신해서 실제로 제공할 수 있는 객체, 위젯이 갱신, 활성화, 비활성화, 삭제등의 이벤트 핸들링이 가능하다.
+
+- `Coroutine`
+

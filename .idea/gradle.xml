@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/chapter03_map" />
             <option value="$PROJECT_DIR$/chapter04_ott_intro" />
             <option value="$PROJECT_DIR$/chapter05_githubrepo" />
+            <option value="$PROJECT_DIR$/chapter06_dust" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
