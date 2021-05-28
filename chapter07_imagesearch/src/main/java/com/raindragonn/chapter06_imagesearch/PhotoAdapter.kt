@@ -11,7 +11,10 @@ import com.raindragonn.chapter06_imagesearch.databinding.ItemPhotoBinding
 
 // Created by raindragonn on 2021/05/27.
 
-class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
+class PhotoAdapter(
+    private val onClickPhoto: (PhotoResponse) -> Unit
+) :
+    RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
     private var photos: List<PhotoResponse> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
@@ -28,8 +31,16 @@ class PhotoAdapter : RecyclerView.Adapter<PhotoAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: ItemPhotoBinding) :
+    inner class ViewHolder(private val binding: ItemPhotoBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    onClickPhoto(photos[adapterPosition])
+                }
+            }
+        }
 
         fun bind(model: PhotoResponse) = with(binding) {
             val dimensionRatio = model.height / model.width.toFloat()

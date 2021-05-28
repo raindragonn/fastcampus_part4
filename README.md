@@ -111,4 +111,7 @@
 
 - `WallpaperManager`
 
+   - 배경화면을 관리할 수 있는 클래스
+
 - `Coroutine`
+
